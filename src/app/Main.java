@@ -100,3 +100,15 @@ public class Main {
         boolean sukses = controller.hapusPutusan(nomor);
         view.tampilkanPesan(sukses ? "Data berhasil dihapus." : "Data tidak ditemukan.");
     }
+
+    private static void prosesUrutkan(KnowledgeController controller, ConsoleView view) {
+        int mode = view.inputPilihan("Urutkan berdasarkan: 1) Vonis (naik)  2) Denda (terbesar) : ", 1, 2);
+        if (mode == 1) {
+            controller.urutkanByVonis();
+        } else {
+            controller.urutkanByDendaTerbesar();
+        }
+        view.tampilkanPesan("Data berhasil diurutkan.");
+        view.tampilkanDaftarPutusan(controller.tampilkanSemua());
+    }
+}
