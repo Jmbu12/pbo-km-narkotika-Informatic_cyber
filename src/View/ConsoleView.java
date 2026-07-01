@@ -41,3 +41,8 @@ public class ConsoleView {
             tampilkanPesan("Tidak ada data untuk ditampilkan.");
             return;
         }
+        System.out.println("\n" + "=".repeat(100));
+        System.out.printf("%-22s %-20s %-15s %-10s %-8s %-10s%n",
+                "No. Perkara", "Nama Terdakwa", "Jenis Narkotika", "Berat(g)", "Vonis(bln)", "Kategori");
+        System.out.println("-".repeat(100));
+    }
