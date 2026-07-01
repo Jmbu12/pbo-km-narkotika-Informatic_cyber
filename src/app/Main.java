@@ -60,3 +60,20 @@ public class Main {
         }
         scanner.close();
     }
+
+    private static void prosesTambah(KnowledgeController controller, ConsoleView view, Scanner scanner) {
+        String[] data = view.inputFormPutusan(scanner);
+        boolean sukses = controller.tambahPutusan(data);
+        if (sukses) {
+            view.tampilkanPesan("Putusan berhasil ditambahkan. Total data: " + controller.getTotalData());
+        } else {
+            view.tampilkanPesan("Gagal menambahkan putusan. Periksa kembali data (nomor perkara mungkin duplikat atau ada nilai tidak valid).");
+        }
+    }
+
+    private static void prosesCari(KnowledgeController controller, ConsoleView view) {
+        int mode = view.inputPilihan("Cari berdasarkan: 1) Nomor Perkara  2) Nama Terdakwa : ", 1, 2);
+        String keyword = view.inputString("Masukkan keyword: ");
+        ArrayList<Putusan> hasil = controller.cariPutusan(keyword, mode == 1 ? "nomor" : "nama");
+        view.tampilkanDaftarPutusan(hasil);
+    }
