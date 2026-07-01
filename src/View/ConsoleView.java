@@ -7,6 +7,14 @@ import util.InputHandler;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * View berbasis konsol. Hanya bertugas menampilkan data dan menerima input
+ * dari pengguna. TIDAK mengandung logika bisnis dan TIDAK mengakses Model
+ * secara langsung — seluruh data diterima dalam bentuk yang sudah diproses
+ * oleh Controller.
+ *
+ * @author GUI Designer
+ */
 public class ConsoleView {
 
     private final Scanner scanner;
@@ -22,6 +30,9 @@ public class ConsoleView {
         System.out.println("=========================================================");
     }
 
+    /**
+     * Menampilkan menu utama dan mengembalikan pilihan pengguna (1-8).
+     */
     public int tampilkanMenu() {
         System.out.println("\n----------------- MENU UTAMA -----------------");
         System.out.println("1. Tambah Putusan Baru");
@@ -36,6 +47,9 @@ public class ConsoleView {
         return InputHandler.validasiPilihan("Pilih menu (1-8): ", 1, 8, scanner);
     }
 
+    /**
+     * Menampilkan daftar putusan dalam format tabel ringkas.
+     */
     public void tampilkanDaftarPutusan(ArrayList<Putusan> list) {
         if (list == null || list.isEmpty()) {
             tampilkanPesan("Tidak ada data untuk ditampilkan.");
@@ -56,4 +70,9 @@ public class ConsoleView {
         }
         System.out.println("=".repeat(100));
         System.out.println("Total: " + list.size() + " data");
+    }
+
+    private String potong(String s, int maxLen) {
+        if (s == null) return "";
+        return s.length() <= maxLen ? s : s.substring(0, maxLen - 1) + "…";
     }
