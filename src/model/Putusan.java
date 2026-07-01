@@ -50,3 +50,12 @@ public class Putusan implements Dapatdicetak {
         this.namaHakim = namaHakim;
         jumlahDibuat++;
     }
+    public Putusan(String nomorPerkara, String namaTerdakwa, String jenisNarkotika,
+                   double beratBarangBukti, int vonisHukuman) {
+        this();
+        this.nomorPerkara = nomorPerkara;
+        this.namaTerdakwa = namaTerdakwa;
+        this.jenisNarkotika = jenisNarkotika;
+        setBeratBarangBukti(beratBarangBukti);
+        setVonisHukuman(vonisHukuman);
+    }
