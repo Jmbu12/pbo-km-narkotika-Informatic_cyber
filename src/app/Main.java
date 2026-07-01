@@ -77,3 +77,20 @@ public class Main {
         ArrayList<Putusan> hasil = controller.cariPutusan(keyword, mode == 1 ? "nomor" : "nama");
         view.tampilkanDaftarPutusan(hasil);
     }
+
+    private static void prosesFilter(KnowledgeController controller, ConsoleView view) {
+        int mode = view.inputPilihan(
+                "Filter berdasarkan: 1) Jenis Narkotika  2) Pengadilan  3) Rentang Vonis (bulan) : ", 1, 3);
+        ArrayList<Putusan> hasil;
+        if (mode == 1) {
+            String jenis = view.inputString("Masukkan jenis narkotika: ");
+            hasil = controller.filterPutusan("jenis", jenis);
+        } else if (mode == 2) {
+            String pengadilan = view.inputString("Masukkan nama pengadilan: ");
+            hasil = controller.filterPutusan("pengadilan", pengadilan);
+        } else {
+            String rentang = view.inputString("Masukkan rentang vonis (format min-max, contoh 0-12): ");
+            hasil = controller.filterPutusan("vonis", rentang);
+        }
+        view.tampilkanDaftarPutusan(hasil);
+    }
