@@ -96,3 +96,34 @@ public class ConsoleView {
     public void tampilkanPesan(String pesan) {
         System.out.println(">> " + pesan);
     }
+
+    /**
+     * Menampilkan form input dan mengumpulkan data putusan baru dari pengguna.
+     * Mengembalikan array String mentah (validasi tipe dilakukan di Controller/InputHandler).
+     */
+    public String[] inputFormPutusan(Scanner sc) {
+        System.out.println("\n--- Form Tambah Putusan Baru ---");
+        String[] data = new String[12];
+        data[0] = InputHandler.validasiString("Nomor Perkara      : ", sc);
+        data[1] = InputHandler.validasiString("Pengadilan         : ", sc);
+        data[2] = InputHandler.validasiString("Tanggal Putusan    : ", sc);
+        data[3] = InputHandler.validasiString("Nama Terdakwa      : ", sc);
+        data[4] = String.valueOf(InputHandler.validasiIntMinimal("Umur Terdakwa      : ", sc, 0));
+        data[5] = InputHandler.validasiString("Jenis Narkotika    : ", sc);
+        data[6] = String.valueOf(InputHandler.validasiDoubleMinimal("Berat Barang Bukti (gram): ", sc, 0.01));
+        data[7] = InputHandler.validasiString("Pasal Dilanggar    : ", sc);
+        data[8] = InputHandler.validasiString("Peran Terdakwa     : ", sc);
+        data[9] = String.valueOf(InputHandler.validasiIntMinimal("Vonis Hukuman (bulan): ", sc, 0));
+        data[10] = String.valueOf(InputHandler.validasiDoubleMinimal("Vonis Denda (rupiah): ", sc, 0));
+        data[11] = InputHandler.validasiString("Nama Hakim         : ", sc);
+        return data;
+    }
+
+    public String inputString(String prompt) {
+        return InputHandler.validasiString(prompt, scanner);
+    }
+
+    public int inputPilihan(String prompt, int min, int max) {
+        return InputHandler.validasiPilihan(prompt, min, max, scanner);
+    }
+}
