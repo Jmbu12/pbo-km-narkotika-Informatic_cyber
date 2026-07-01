@@ -54,4 +54,6 @@ public class ConsoleView {
                     p.getVonisHukuman(),
                     p.getKategoriHukuman());
         }
+        System.out.println("=".repeat(100));
+        System.out.println("Total: " + list.size() + " data");
     }
