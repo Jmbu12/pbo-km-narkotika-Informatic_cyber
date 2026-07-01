@@ -37,3 +37,10 @@ public class KnowledgeController {
             if (repository.cariByNomor(nomorPerkara) != null) {
                 return false;
             }
+
+            if (nomorPerkara.isEmpty() || namaTerdakwa.isEmpty()) {
+                return false;
+            }
+            if (repository.cariByNomor(nomorPerkara) != null) {
+                return false;
+            }
