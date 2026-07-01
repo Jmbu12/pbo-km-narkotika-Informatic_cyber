@@ -15,4 +15,9 @@ public class ConsoleView {
         this.scanner = scanner;
     }
 
+    public void tampilkanBanner() {
+        System.out.println("=========================================================");
+        System.out.println("   KNOWLEDGE MANAGEMENT SYSTEM (KMS)");
+        System.out.println("   PUTUSAN PENGADILAN NARKOTIKA");
+        System.out.println("=========================================================");
     }
