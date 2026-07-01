@@ -184,3 +184,55 @@ public class Putusan implements Dapatdicetak {
             tampilkan();
             return;
         }
+        System.out.println("=========================================");
+        System.out.println("Nomor Perkara   : " + nomorPerkara);
+        System.out.println("Pengadilan      : " + pengadilan);
+        System.out.println("Tanggal Putusan : " + tanggalPutusan);
+        System.out.println("Nama Terdakwa   : " + namaTerdakwa);
+        System.out.println("Umur Terdakwa   : " + umurTerdakwa + " tahun");
+        System.out.println("Jenis Narkotika : " + jenisNarkotika);
+        System.out.println("Berat B. Bukti  : " + beratBarangBukti + " gram");
+        System.out.println("Pasal Dilanggar : " + pasalDilanggar);
+        System.out.println("Peran Terdakwa  : " + peranTerdakwa);
+        System.out.println("Vonis Hukuman   : " + vonisHukuman + " bulan (" + getKategoriHukuman() + ")");
+        System.out.println("Vonis Denda     : Rp" + String.format("%,.0f", vonisDenda));
+        System.out.println("Hakim Ketua     : " + namaHakim);
+        System.out.println("=========================================");
+    }
+
+    public void tampilkan(String prefix) {
+        System.out.println(prefix + " " + ringkasanSingkat());
+    }
+
+    public String getKategoriHukuman() {
+        return KategoriHukuman.dariBulan(this.vonisHukuman).getLabel();
+    }
+
+    @Override
+    public String ringkasanSingkat() {
+        return String.format("[%s] %s | %s | %.1fg | %d bln | %s",
+                nomorPerkara, namaTerdakwa, jenisNarkotika, beratBarangBukti,
+                vonisHukuman, getKategoriHukuman());
+    }
+
+    @Override
+    public String toString() {
+        return "Putusan{nomorPerkara='" + nomorPerkara + "', namaTerdakwa='" + namaTerdakwa +
+                "', jenisNarkotika='" + jenisNarkotika + "', beratBarangBukti=" + beratBarangBukti +
+                ", vonisHukuman=" + vonisHukuman + ", vonisDenda=" + vonisDenda +
+                ", pengadilan='" + pengadilan + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Putusan)) return false;
+        Putusan lain = (Putusan) obj;
+        return this.nomorPerkara != null && this.nomorPerkara.equalsIgnoreCase(lain.nomorPerkara);
+    }
+
+    @Override
+    public int hashCode() {
+        return nomorPerkara == null ? 0 : nomorPerkara.toLowerCase().hashCode();
+    }
+}
