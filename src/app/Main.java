@@ -94,3 +94,9 @@ public class Main {
         }
         view.tampilkanDaftarPutusan(hasil);
     }
+
+    private static void prosesHapus(KnowledgeController controller, ConsoleView view) {
+        String nomor = view.inputString("Masukkan Nomor Perkara yang akan dihapus: ");
+        boolean sukses = controller.hapusPutusan(nomor);
+        view.tampilkanPesan(sukses ? "Data berhasil dihapus." : "Data tidak ditemukan.");
+    }
