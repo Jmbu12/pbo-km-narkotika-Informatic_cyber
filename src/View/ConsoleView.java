@@ -76,3 +76,23 @@ public class ConsoleView {
         if (s == null) return "";
         return s.length() <= maxLen ? s : s.substring(0, maxLen - 1) + "…";
     }
+
+    public void tampilkanDetail(Putusan p) {
+        if (p == null) {
+            tampilkanPesan("Data tidak ditemukan.");
+            return;
+        }
+        p.tampilkan(true);
+    }
+
+    public void tampilkanStatistik(StatistikPutusan stat) {
+        if (stat == null) {
+            tampilkanPesan("Statistik tidak tersedia.");
+            return;
+        }
+        stat.tampilkanLaporan();
+    }
+
+    public void tampilkanPesan(String pesan) {
+        System.out.println(">> " + pesan);
+    }
