@@ -23,3 +23,40 @@ public class Main {
 
         view.tampilkanBanner();
         view.tampilkanPesan("Data sampel berhasil dimuat: " + controller.getTotalData() + " putusan.");
+
+
+        boolean berjalan = true;
+        while (berjalan) {
+            int pilihan = view.tampilkanMenu();
+            switch (pilihan) {
+                case 1:
+                    prosesTambah(controller, view, scanner);
+                    break;
+                case 2:
+                    view.tampilkanDaftarPutusan(controller.tampilkanSemua());
+                    break;
+                case 3:
+                    prosesCari(controller, view);
+                    break;
+                case 4:
+                    prosesFilter(controller, view);
+                    break;
+                case 5:
+                    prosesHapus(controller, view);
+                    break;
+                case 6:
+                    view.tampilkanStatistik(controller.getStatistik());
+                    break;
+                case 7:
+                    prosesUrutkan(controller, view);
+                    break;
+                case 8:
+                    berjalan = false;
+                    view.tampilkanPesan("Terima kasih. Program selesai.");
+                    break;
+                default:
+                    view.tampilkanPesan("Pilihan tidak valid.");
+            }
+        }
+        scanner.close();
+    }
