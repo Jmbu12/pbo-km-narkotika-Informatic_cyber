@@ -45,4 +45,13 @@ public class ConsoleView {
         System.out.printf("%-22s %-20s %-15s %-10s %-8s %-10s%n",
                 "No. Perkara", "Nama Terdakwa", "Jenis Narkotika", "Berat(g)", "Vonis(bln)", "Kategori");
         System.out.println("-".repeat(100));
+        for (Putusan p : list) {
+            System.out.printf("%-22s %-20s %-15s %-10.1f %-8d %-10s%n",
+                    p.getNomorPerkara(),
+                    potong(p.getNamaTerdakwa(), 20),
+                    potong(p.getJenisNarkotika(), 15),
+                    p.getBeratBarangBukti(),
+                    p.getVonisHukuman(),
+                    p.getKategoriHukuman());
+        }
     }
