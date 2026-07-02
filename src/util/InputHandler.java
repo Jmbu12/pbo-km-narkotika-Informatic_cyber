@@ -53,3 +53,30 @@ public final class InputHandler {
             return nilai;
         }
     }
+
+    public static String validasiString(String prompt, Scanner sc) {
+        while (true) {
+            System.out.print(prompt);
+            String input = sc.nextLine().trim();
+            try {
+                if (input.isEmpty()) {
+                    throw new IllegalArgumentException("Input tidak boleh kosong");
+                }
+                return input;
+            } catch (IllegalArgumentException e) {
+                System.out.println("  [ERROR] " + e.getMessage() + ". Coba lagi.");
+            }
+        }
+    }
+
+    public static int validasiPilihan(String prompt, int min, int max, Scanner sc) {
+        while (true) {
+            int pilihan = validasiInt(prompt, sc);
+            if (pilihan < min || pilihan > max) {
+                System.out.println("  [ERROR] Pilihan harus antara " + min + " - " + max + ". Coba lagi.");
+                continue;
+            }
+            return pilihan;
+        }
+    }
+}
