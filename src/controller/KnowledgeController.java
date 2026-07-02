@@ -94,3 +94,26 @@ public class KnowledgeController {
         }
     }
 
+
+
+    public StatistikPutusan getStatistik() {
+        return new StatistikPutusan(repository.getDaftarSemua());
+    }
+
+    public ArrayList<Putusan> tampilkanSemua() {
+        return repository.getDaftarSemua();
+    }
+
+    public int getTotalData() {
+        return repository.getTotalData();
+    }
+
+    public void urutkanByVonis() {
+        repository.urutkanByVonis();
+    }
+
+    public void urutkanByDendaTerbesar() {
+        repository.urutkanByDendaTerbesar();
+    }
+}
+
