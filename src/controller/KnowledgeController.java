@@ -56,3 +56,41 @@ public class KnowledgeController {
             return false;
         }
     }
+
+    public ArrayList<Putusan> cariPutusan(String keyword, String mode) {
+        ArrayList<Putusan> hasil = new ArrayList<>();
+        if (keyword == null || mode == null) return hasil;
+
+        switch (mode.toLowerCase()) {
+            case "nomor":
+                Putusan p = repository.cariByNomor(keyword);
+                if (p != null) hasil.add(p);
+                break;
+            case "nama":
+                hasil = repository.cariByNama(keyword);
+                break;
+            default:
+                break;
+        }
+        return hasil;
+    }
+
+    public boolean hapusPutusan(String nomor) {
+        return repository.hapus(nomor);
+    }
+
+    public boolean updatePutusan(String nomorLama, String[] dataBaru) {
+        if (dataBaru == null || dataBaru.length < 12) return false;
+        try {
+            Putusan baru = new Putusan(
+                    dataBaru[0].trim(), dataBaru[1].trim(), dataBaru[2].trim(), dataBaru[3].trim(),
+                    Integer.parseInt(dataBaru[4].trim()), dataBaru[5].trim(),
+                    Double.parseDouble(dataBaru[6].trim()), dataBaru[7].trim(), dataBaru[8].trim(),
+                    Integer.parseInt(dataBaru[9].trim()), Double.parseDouble(dataBaru[10].trim()),
+                    dataBaru[11].trim());
+            return repository.update(nomorLama, baru);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
