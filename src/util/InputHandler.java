@@ -30,3 +30,15 @@ public final class InputHandler {
             return nilai;
         }
     }
+
+    public static double validasiDouble(String prompt, Scanner sc) {
+        while (true) {
+            System.out.print(prompt);
+            String input = sc.nextLine().trim();
+            try {
+                return Double.parseDouble(input);
+            } catch (NumberFormatException e) {
+                System.out.println("  [ERROR] Input harus berupa angka (desimal diperbolehkan). Coba lagi.");
+            }
+        }
+    }
