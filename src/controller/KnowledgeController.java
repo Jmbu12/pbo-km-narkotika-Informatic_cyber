@@ -70,7 +70,6 @@ public class KnowledgeController {
                 hasil = repository.cariByNama(keyword);
                 break;
             default:
-                // mode tidak dikenali -> kembalikan list kosong
                 break;
         }
         return hasil;
