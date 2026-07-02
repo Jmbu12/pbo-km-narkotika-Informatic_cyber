@@ -42,3 +42,14 @@ public final class InputHandler {
             }
         }
     }
+
+    public static double validasiDoubleMinimal(String prompt, Scanner sc, double minimal) {
+        while (true) {
+            double nilai = validasiDouble(prompt, sc);
+            if (nilai < minimal) {
+                System.out.println("  [ERROR] Nilai tidak boleh kurang dari " + minimal + ". Coba lagi.");
+                continue;
+            }
+            return nilai;
+        }
+    }
