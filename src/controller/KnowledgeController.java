@@ -44,3 +44,15 @@ public class KnowledgeController {
             if (repository.cariByNomor(nomorPerkara) != null) {
                 return false;
             }
+
+            Putusan p = new Putusan(nomorPerkara, pengadilan, tanggalPutusan, namaTerdakwa,
+                    umurTerdakwa, jenisNarkotika, beratBarangBukti, pasalDilanggar,
+                    peranTerdakwa, vonisHukuman, vonisDenda, namaHakim);
+            repository.simpan(p);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
