@@ -20,4 +20,13 @@ public final class InputHandler {
         }
     }
 
-
+    public static int validasiIntMinimal(String prompt, Scanner sc, int minimal) {
+        while (true) {
+            int nilai = validasiInt(prompt, sc);
+            if (nilai < minimal) {
+                System.out.println("  [ERROR] Nilai tidak boleh kurang dari " + minimal + ". Coba lagi.");
+                continue;
+            }
+            return nilai;
+        }
+    }
