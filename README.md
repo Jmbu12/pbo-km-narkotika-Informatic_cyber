@@ -272,4 +272,4 @@ feature/* -> Pull Request -> develop -> Pull Request -> main
 ## Video Demo
 
 **Tautan Video Demo:**  
-[]
+https://youtu.be/kBKupMOOWeM?si=YidF_q4bahCU_2Ua
